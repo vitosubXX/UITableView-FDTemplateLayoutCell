@@ -39,4 +39,16 @@
     self.timeLabel.text = entity.time;
 }
 
+// If you are not using auto layout, override this method, enable it by setting
+// "fd_enforceFrameLayout" to YES.
+- (CGSize)sizeThatFits:(CGSize)size {
+    CGFloat totalHeight = 0;
+    totalHeight += [self.titleLabel sizeThatFits:size].height;
+    totalHeight += [self.contentLabel sizeThatFits:size].height;
+    totalHeight += [self.contentImageView sizeThatFits:size].height;
+    totalHeight += [self.usernameLabel sizeThatFits:size].height;
+    totalHeight += 40; // margins
+    return CGSizeMake(size.width, totalHeight);
+}
+
 @end
